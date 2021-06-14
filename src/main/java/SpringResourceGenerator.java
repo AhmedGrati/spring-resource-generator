@@ -1,12 +1,11 @@
+import Commands.Command;
 import picocli.CommandLine;
-@CommandLine.Command(name = "ASCIIArt", version = "ASCIIArt 1.0", mixinStandardHelpOptions = true)
+@CommandLine.Command(name = "spring-generator",subcommands = {Command.class},
+        version = "1.0.0",
+        description = "Description for a sample application",
+        mixinStandardHelpOptions = true)
 public class SpringResourceGenerator implements Runnable{
-    @CommandLine.Option(names = { "-s", "--font-size" }, description = "Font size")
-    int fontSize = 19;
 
-    @CommandLine.Parameters(paramLabel = "<word>", defaultValue = "Hello, picocli",
-            description = "Words to be translated into ASCII art.")
-    private String[] words = { "Hello,", "picocli" };
     public static void main(String[] args) {
         int exitCode = new CommandLine(new SpringResourceGenerator()).execute(args);
         System.exit(exitCode);

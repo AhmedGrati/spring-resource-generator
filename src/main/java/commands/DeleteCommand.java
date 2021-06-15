@@ -3,6 +3,8 @@ package commands;
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "delete",
+        aliases = {"d"},
+        abbreviateSynopsis = true,
         description = "Delete An Existed Schematic.",
         headerHeading = "Usage:%n%n",
         synopsisHeading = "%n",

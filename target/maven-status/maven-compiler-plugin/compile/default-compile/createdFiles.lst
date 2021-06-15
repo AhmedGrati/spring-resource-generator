@@ -1,3 +1,4 @@
-Commands\DeleteCommand.class
-Commands\GenerateCommand.class
+commands\GenerateCommand.class
+commands\DeleteCommand.class
 SpringResourceGenerator.class
+generics\Schematics.class

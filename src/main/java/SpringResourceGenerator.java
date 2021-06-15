@@ -3,6 +3,8 @@ import commands.GenerateCommand;
 import picocli.CommandLine;
 @CommandLine.Command(name = "spring-generator",subcommands = {DeleteCommand.class,GenerateCommand.class},
         version = "1.0.0",
+
+        synopsisSubcommandLabel = "aaaaa",
         description = "A Command Line Which Helps Spring Developers To Manage Schematic Easily.",
         headerHeading = "Usage:%n%n",
         synopsisHeading = "%n",

@@ -3,7 +3,9 @@ package commands;
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "generate",
+        aliases = {"g"},
         description = "Generate A New Schematic.",
+        synopsisSubcommandLabel = "g",
         headerHeading = "Usage:%n%n",
         synopsisHeading = "%n",
         descriptionHeading = "%nDescription:%n%n",

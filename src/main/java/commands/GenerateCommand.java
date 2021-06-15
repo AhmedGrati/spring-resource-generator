@@ -1,15 +1,18 @@
-package Commands;
+package commands;
 
 import picocli.CommandLine;
 
-import java.util.concurrent.Callable;
-
 @CommandLine.Command(name = "generate",
-        description = "aaaaaaaaaaa",
+        description = "Generate A New Schematic.",
+        headerHeading = "Usage:%n%n",
+        synopsisHeading = "%n",
+        descriptionHeading = "%nDescription:%n%n",
+        parameterListHeading = "%nParameters:%n",
+        optionListHeading = "%nOptions:%n",
         version = "1.0.0",
         mixinStandardHelpOptions = true
 )
-public class Command implements Runnable {
+public class GenerateCommand implements Runnable {
 
     @CommandLine.Option(names = { "-s", "--font-size" }, description = "Font size")
     int fontSize = 19;

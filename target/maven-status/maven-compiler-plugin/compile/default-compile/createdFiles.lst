@@ -1,2 +1,3 @@
-Commands\Command.class
+Commands\DeleteCommand.class
+Commands\GenerateCommand.class
 SpringResourceGenerator.class

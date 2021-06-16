@@ -1,24 +1,28 @@
 import commands.DeleteCommand;
 import commands.GenerateCommand;
+import configuration.help.AdditionalHelpInformation;
+import configuration.startup.ANSIStyling;
+import configuration.startup.AnsiConsoleManagement;
 import helpers.AdditionalHelpMessage;
 import org.fusesource.jansi.AnsiConsole;
 import picocli.CommandLine;
+import utils.Constants;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@CommandLine.Command(name = "spring-generator",subcommands = {DeleteCommand.class,GenerateCommand.class},
-        version = "1.0.0",
+@CommandLine.Command(name = Constants.SPRING_GENERATOR_COMMAND_NAME,subcommands = {DeleteCommand.class,GenerateCommand.class},
+        version = Constants.VERSION,
 
-        description = "@|fg(green) A Command Line Which Helps Spring Developers To Manage Schematic Easily. |@",
-        headerHeading = "Usage:%n%n",
-        synopsisHeading = "%n",
-        descriptionHeading = "%nDescription:%n%n",
-        parameterListHeading = "%nParameters:%n",
-        optionListHeading = "%nOptions:%n",
-        header = "@|fg(green) A CLI Tool For Spring Applications.|@",
+        description = Constants.SPRING_GENERATOR_COMMAND_DESCRIPTION,
+        headerHeading = Constants.HEADER_HEADING,
+        synopsisHeading = Constants.SYNOPSIS_HEADING,
+        descriptionHeading = Constants.DESCRIPTION_HEADING,
+        parameterListHeading = Constants.PARAM_LIST_HEADING,
+        optionListHeading = Constants.OPTION_LIST_HEADING,
+        header = Constants.SPRING_GENERATOR_COMMAND_HEADER,
         mixinStandardHelpOptions = true)
 public class SpringResourceGenerator implements Runnable{
 
@@ -26,47 +30,26 @@ public class SpringResourceGenerator implements Runnable{
 
 
     public static void main(String[] args) {
+        // Declaring our command line which will pass through a pipeline to change some fields in it.
         CommandLine commandLine = new CommandLine(new SpringResourceGenerator());
-        final String SECTION_KEY_ENV_HEADING = "environmentVariables";
-        final String SECTION_KEY_ENV_DETAILS = "environmentVariablesDetails";
 
-        final String header = "\nAvailable Schematics:%n";
-        Map<String, String> env = new LinkedHashMap<>();
-        env.put("@|fg(39) entity,en|@","@|fg(green) Create/Delete An Entity.|@");
-        env.put("@|fg(39) resource,res|@","@|fg(green) Create/Delete A CRUD Resource.|@");
-        CommandLine.Help.ColorScheme colorScheme = new CommandLine.Help.ColorScheme.Builder()
-                .options     (CommandLine.Help.Ansi.Style.fg_yellow)                // yellow foreground color
-                .parameters  (CommandLine.Help.Ansi.Style.fg_yellow)
-                .optionParams(CommandLine.Help.Ansi.Style.italic)
-                .errors      (CommandLine.Help.Ansi.Style.fg_red, CommandLine.Help.Ansi.Style.bold)
-                .stackTraces (CommandLine.Help.Ansi.Style.italic)
-                .build();
-//        cmd.getHelpSectionMap().put(SECTION_KEY_ENV_HEADING, help ->
-//
-//            help.createHeading("Available Schematics:%n")
-//        );
-//
-//        cmd.getHelpSectionMap().put(SECTION_KEY_ENV_DETAILS,
-//                help -> help.createTextTable(env).toString());
-//
-//        // specify the location of the new sections
-//        List<String> keys = new ArrayList<>(cmd.getHelpSectionKeys());
-//
-//
-        AdditionalHelpMessage additionalHelpMessage = new AdditionalHelpMessage(
+        // Add the "available schematics" section
+        commandLine = AdditionalHelpInformation.addAnotherHelpSection(commandLine);
 
-                header,
-                env,
-                SECTION_KEY_ENV_HEADING,
-                SECTION_KEY_ENV_DETAILS
-        );
-        commandLine = additionalHelpMessage.createAppropriateHelpMessage(commandLine);
+        // Configuring the ANSI Coloring ans Styling
+        CommandLine.Help.ColorScheme colorScheme = ANSIStyling.configureANSIStyling();
+
+        // Change the color schema of the command with the generated one.
         commandLine.setColorScheme(colorScheme);
 
-        AnsiConsole.systemInstall();
+        // Enable coloring in windows systems.
+        AnsiConsoleManagement.install();
+
+        // execute the command line.
         int exitCode = commandLine.execute(args);
 
         System.exit(exitCode);
+
         AnsiConsole.systemUninstall();
     }
 

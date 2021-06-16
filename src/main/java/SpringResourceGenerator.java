@@ -32,10 +32,9 @@ public class SpringResourceGenerator implements Runnable{
 
         final String header = "\nAvailable Schematics:%n";
         Map<String, String> env = new LinkedHashMap<>();
-        env.put("@|fg(red) entity,en|@","@|fg(green) Create/Delete An Entity.|@");
-        env.put("@|fg(red) resource,res|@","@|fg(green) Create/Delete A CRUD Resource.|@");
+        env.put("@|fg(39) entity,en|@","@|fg(green) Create/Delete An Entity.|@");
+        env.put("@|fg(39) resource,res|@","@|fg(green) Create/Delete A CRUD Resource.|@");
         CommandLine.Help.ColorScheme colorScheme = new CommandLine.Help.ColorScheme.Builder()
-                .commands    (CommandLine.Help.Ansi.Style.fg_blue, CommandLine.Help.Ansi.Style.underline)    // combine multiple styles
                 .options     (CommandLine.Help.Ansi.Style.fg_yellow)                // yellow foreground color
                 .parameters  (CommandLine.Help.Ansi.Style.fg_yellow)
                 .optionParams(CommandLine.Help.Ansi.Style.italic)

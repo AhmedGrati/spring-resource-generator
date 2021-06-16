@@ -23,6 +23,8 @@ public class GenerateCommand implements Runnable {
             description = "Words to be translated into ASCII art.")
     private String[] words = { "Hello,", "picocli" };
 
+
+
     @Override
     public void run() {
         System.out.println("BELEHI EKTEB L HELP");

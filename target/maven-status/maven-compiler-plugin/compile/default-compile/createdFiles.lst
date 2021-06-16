@@ -1,4 +1,5 @@
 commands\GenerateCommand.class
 commands\DeleteCommand.class
+helpers\AdditionalHelpMessage.class
 SpringResourceGenerator.class
 generics\Schematics.class

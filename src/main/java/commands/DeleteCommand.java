@@ -21,8 +21,6 @@ import java.util.logging.Logger;
 public class DeleteCommand implements Runnable {
 
     public final Logger logger = Logger.getLogger(DeleteCommand.class.getName());
-    @CommandLine.Option(names = { "-s", "--font-size" }, description = "Font size")
-    int fontSize = 19;
 
 
     @Override

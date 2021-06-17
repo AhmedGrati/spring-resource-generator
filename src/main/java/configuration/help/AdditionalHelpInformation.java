@@ -9,6 +9,10 @@ import java.util.Map;
 
 public class AdditionalHelpInformation {
 
+    AdditionalHelpInformation() {
+
+    }
+
     public static CommandLine addAnotherHelpSection(CommandLine commandLine) {
 
         Map<String, String> env = new LinkedHashMap<>();

@@ -3,7 +3,6 @@ import commands.GenerateCommand;
 import configuration.help.AdditionalHelpInformation;
 import configuration.startup.ANSIStyling;
 import configuration.startup.AnsiConsoleManagement;
-import org.fusesource.jansi.AnsiConsole;
 import picocli.CommandLine;
 import utils.Constants;
 
@@ -50,7 +49,7 @@ public class SpringResourceGenerator implements Runnable{
 
         System.exit(exitCode);
 
-        AnsiConsole.systemUninstall();
+        AnsiConsoleManagement.uninstall();
     }
 
     @Override

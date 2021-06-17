@@ -6,10 +6,42 @@ import java.util.List;
 import java.util.Map;
 
 public class AdditionalHelpMessage {
-    public String headerOfAdditionalHelpMessage;
-    public Map<String, String> additionalMessageHelp;
-    public String keyOfHeader;
-    public String keyOfDetails;
+    private String headerOfAdditionalHelpMessage;
+    private Map<String, String> additionalMessageHelp;
+    private String keyOfHeader;
+    private String keyOfDetails;
+
+    public String getHeaderOfAdditionalHelpMessage() {
+        return headerOfAdditionalHelpMessage;
+    }
+
+    public void setHeaderOfAdditionalHelpMessage(String headerOfAdditionalHelpMessage) {
+        this.headerOfAdditionalHelpMessage = headerOfAdditionalHelpMessage;
+    }
+
+    public Map<String, String> getAdditionalMessageHelp() {
+        return additionalMessageHelp;
+    }
+
+    public void setAdditionalMessageHelp(Map<String, String> additionalMessageHelp) {
+        this.additionalMessageHelp = additionalMessageHelp;
+    }
+
+    public String getKeyOfHeader() {
+        return keyOfHeader;
+    }
+
+    public void setKeyOfHeader(String keyOfHeader) {
+        this.keyOfHeader = keyOfHeader;
+    }
+
+    public String getKeyOfDetails() {
+        return keyOfDetails;
+    }
+
+    public void setKeyOfDetails(String keyOfDetails) {
+        this.keyOfDetails = keyOfDetails;
+    }
 
     public AdditionalHelpMessage(
             String headerOfAdditionalHelpMessage,

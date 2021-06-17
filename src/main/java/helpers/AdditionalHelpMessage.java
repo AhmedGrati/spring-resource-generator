@@ -6,10 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public class AdditionalHelpMessage {
-    public String headerOfAdditionalHelpMessage;
-    public Map<String, String> additionalMessageHelp;
-    public String keyOfHeader;
-    public String keyOfDetails;
+    private String headerOfAdditionalHelpMessage;
+    private Map<String, String> additionalMessageHelp;
+    private String keyOfHeader;
+    private String keyOfDetails;
+
 
     public AdditionalHelpMessage(
             String headerOfAdditionalHelpMessage,

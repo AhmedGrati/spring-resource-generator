@@ -4,6 +4,9 @@ import picocli.CommandLine;
 
 public class ANSIStyling {
 
+    ANSIStyling() {}
+
+
     public static CommandLine.Help.ColorScheme configureANSIStyling() {
 
         return new CommandLine.Help.ColorScheme.Builder()

@@ -3,6 +3,9 @@ package commands;
 import picocli.CommandLine;
 import utils.Constants;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * 
  */
@@ -17,15 +20,11 @@ import utils.Constants;
 )
 public class DeleteCommand implements Runnable {
 
-    @CommandLine.Option(names = { "-s", "--font-size" }, description = "Font size")
-    int fontSize = 19;
+    public final Logger logger = Logger.getLogger(DeleteCommand.class.getName());
 
-    @CommandLine.Parameters(paramLabel = "<word>", defaultValue = "Hello, picocli",
-            description = "Words to be translated into ASCII art.")
-    private String[] words = { "Hello,", "picocli" };
 
     @Override
     public void run() {
-        System.out.println("BELEHI EKTEB L HELP");
+        logger.log(Level.INFO, "IMPLEMENTATION OF DELETE COMMAND RUN");
     }
 }

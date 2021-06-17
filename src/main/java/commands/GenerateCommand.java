@@ -3,6 +3,9 @@ package commands;
 import picocli.CommandLine;
 import utils.Constants;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @CommandLine.Command(name = Constants.GENERATE_COMMAND_NAME,
         aliases = {Constants.GENERATE_COMMAND_NAME_ALIAS},
         description = Constants.GENERATE_COMMAND_DESCRIPTION,
@@ -14,17 +17,10 @@ import utils.Constants;
 )
 public class GenerateCommand implements Runnable {
 
-    @CommandLine.Option(names = { "-s", "--font-size" }, description = "Font size")
-    int fontSize = 19;
-
-    @CommandLine.Parameters(paramLabel = "<word>", defaultValue = "Hello, picocli",
-            description = "Words to be translated into ASCII art.")
-    private String[] words = { "Hello,", "picocli" };
-
-
+    public final Logger logger = Logger.getLogger(GenerateCommand.class.getName());
 
     @Override
     public void run() {
-        System.out.println("BELEHI EKTEB L HELP");
+        logger.log(Level.INFO, "IMPLEMENTATION OF GENERATE COMMAND");
     }
 }

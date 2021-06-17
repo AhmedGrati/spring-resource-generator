@@ -3,15 +3,12 @@ import commands.GenerateCommand;
 import configuration.help.AdditionalHelpInformation;
 import configuration.startup.ANSIStyling;
 import configuration.startup.AnsiConsoleManagement;
-import helpers.AdditionalHelpMessage;
 import org.fusesource.jansi.AnsiConsole;
 import picocli.CommandLine;
 import utils.Constants;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @CommandLine.Command(name = Constants.SPRING_GENERATOR_COMMAND_NAME,subcommands = {DeleteCommand.class,GenerateCommand.class},
         version = Constants.VERSION,
@@ -26,6 +23,7 @@ import java.util.Map;
         mixinStandardHelpOptions = true)
 public class SpringResourceGenerator implements Runnable{
 
+    public final Logger logger = Logger.getLogger(SpringResourceGenerator.class.getName());
 
     /**
      *
@@ -57,6 +55,8 @@ public class SpringResourceGenerator implements Runnable{
 
     @Override
     public void run() {
+
+        logger.log(Level.INFO, "RUN METHOD");
 
     }
 }

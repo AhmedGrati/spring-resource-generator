@@ -27,8 +27,10 @@ import java.util.Map;
 public class SpringResourceGenerator implements Runnable{
 
 
-
-
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // Declaring our command line which will pass through a pipeline to change some fields in it.
         CommandLine commandLine = new CommandLine(new SpringResourceGenerator());

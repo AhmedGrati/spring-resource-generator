@@ -23,9 +23,10 @@ public class AdditionalHelpMessage {
         this.keyOfDetails = keyOfDetails;
     }
 
-    /*
-    @params commandLine command line which we want to mutate in order to add the additional section in the help message
-    * **/
+    /**
+     * @param commandLine
+     * @return
+     */
     public CommandLine createAppropriateHelpMessage(CommandLine commandLine) {
 
         // Create the Header of the additional Section Help

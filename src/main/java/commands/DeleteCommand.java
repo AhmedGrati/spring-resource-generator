@@ -3,6 +3,9 @@ package commands;
 import picocli.CommandLine;
 import utils.Constants;
 
+/**
+ * 
+ */
 @CommandLine.Command(name = Constants.DELETE_COMMAND_NAME,
         aliases = {Constants.DELETE_COMMAND_NAME_ALIAS},
         description = Constants.DELETE_COMMAND_DESCRIPTION,

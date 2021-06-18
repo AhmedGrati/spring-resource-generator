@@ -1,8 +1,10 @@
 package schematics;
 
+import utils.APITypeValues;
+
 public class RESTApi implements APIType{
     @Override
     public String decorateResourceWithAPIType() {
-       return "REST";
+       return APITypeValues.REST.getValue();
     }
 }

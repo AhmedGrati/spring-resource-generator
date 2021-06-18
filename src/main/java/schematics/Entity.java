@@ -2,12 +2,12 @@ package schematics;
 
 public class Entity extends Resource{
 
-    Entity(APIType apiType) {
+    public Entity(APIType apiType) {
         super(apiType);
     }
 
     @Override
-    public Resource createResource(APIType apiType) {
+    public Resource createResource() {
         return null;
     }
 }

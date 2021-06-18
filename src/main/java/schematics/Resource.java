@@ -14,5 +14,5 @@ public abstract class Resource {
         this.apiType = apiType;
     }
 
-    public abstract Resource createResource(APIType apiType);
+    public abstract Resource createResource();
 }

@@ -5,7 +5,7 @@ public class Service extends Resource{
         super(apiType);
     }
     @Override
-    public Resource createResource(APIType apiType) {
+    public Resource createResource() {
         return null;
     }
 }

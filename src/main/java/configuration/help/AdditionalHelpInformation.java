@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class AdditionalHelpInformation {
 
+
     AdditionalHelpInformation() {
 
     }
@@ -16,8 +17,8 @@ public class AdditionalHelpInformation {
     public static CommandLine addAnotherHelpSection(CommandLine commandLine) {
 
         Map<String, String> env = new LinkedHashMap<>();
-        env.put(Constants.HELP_SCHEMATIC_ENTITY_NAME,Constants.HELP_SCHEMATIC_ENTITY_DESCRIPTION);
-        env.put(Constants.HELP_SCHEMATIC_RESOURCE_NAME,Constants.HELP_SCHEMATIC_RESOURCE_DESCRIPTION);
+        env.put(Constants.HELP_SCHEMATIC_ENTITY_NAME, Constants.HELP_SCHEMATIC_ENTITY_DESCRIPTION);
+        env.put(Constants.HELP_SCHEMATIC_RESOURCE_NAME, Constants.HELP_SCHEMATIC_RESOURCE_DESCRIPTION);
         AdditionalHelpMessage additionalHelpMessage = new AdditionalHelpMessage(
 
                 Constants.HELP_AVAILABLE_SCHEMATICS_SECTION,

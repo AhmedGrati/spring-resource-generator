@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * 
+ *
  */
 @CommandLine.Command(name = Constants.DELETE_COMMAND_NAME,
         aliases = {Constants.DELETE_COMMAND_NAME_ALIAS},

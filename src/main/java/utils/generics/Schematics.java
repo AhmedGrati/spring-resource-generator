@@ -5,6 +5,7 @@ public enum Schematics {
     ENTITY("entity");
 
     String value;
+
     private Schematics(String value) {
         this.value = value;
     }

@@ -9,7 +9,7 @@ import utils.Constants;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@CommandLine.Command(name = Constants.SPRING_GENERATOR_COMMAND_NAME,subcommands = {DeleteCommand.class,GenerateCommand.class},
+@CommandLine.Command(name = Constants.SPRING_GENERATOR_COMMAND_NAME, subcommands = {DeleteCommand.class, GenerateCommand.class},
         version = Constants.VERSION,
 
         description = Constants.SPRING_GENERATOR_COMMAND_DESCRIPTION,
@@ -20,12 +20,11 @@ import java.util.logging.Logger;
         optionListHeading = Constants.OPTION_LIST_HEADING,
         header = Constants.SPRING_GENERATOR_COMMAND_HEADER,
         mixinStandardHelpOptions = true)
-public class SpringResourceGenerator implements Runnable{
+public class SpringResourceGenerator implements Runnable {
 
     public final Logger logger = Logger.getLogger(SpringResourceGenerator.class.getName());
 
     /**
-     *
      * @param args
      */
     public static void main(String[] args) {

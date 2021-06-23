@@ -1,23 +1,23 @@
 package actions;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.codehaus.plexus.util.StringUtils;
 import schematics.Resource;
 import utils.APITypeValues;
 import utils.NamingUtils;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.Objects;
-import java.util.logging.Logger;
 
 public class GenerateAction {
 
 
     public void generate(Resource resource, String resourceName) throws IOException {
-        String appropriateResourceName = StringUtils.capitalise(resourceName) + ".java";
+        String appropriateResourceName = StringUtils.capitalise(resourceName);
+        String fileName = appropriateResourceName+".java";
         String packageName = NamingUtils.getPackageNameFromResourceAndAPIType(resource, APITypeValues.REST);
         File file = FileUtils.getFile("src/main/java");
         String path = getPathOfResourcePackage(file, packageName);
@@ -27,10 +27,10 @@ public class GenerateAction {
                 System.out.println("hey");
                 // TODO: Implement Error Handling
             } else {
-                String createdFilePath = String.valueOf(Paths.get(file.getPath(), packageName, appropriateResourceName));
+                String createdFilePath = String.valueOf(Paths.get(file.getPath(), packageName, fileName));
                 boolean isFileCreated = addFile(new File(createdFilePath));
                 if (isFileCreated) {
-                    fillFileWithContent(createdFilePath);
+                    fillFileWithContent(createdFilePath, appropriateResourceName, resource);
                 } else {
                     System.out.println("z");
                 }
@@ -38,10 +38,26 @@ public class GenerateAction {
         }
     }
 
-    public void fillFileWithContent(String path) {
+    public String getDecodedSampleFileContent(Resource resource) throws IOException {
 
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("entity-sample.txt");
-        System.out.println(inputStream);
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("samples/" + resource.getClass().getSimpleName() + ".txt");
+        StringWriter writer = new StringWriter();
+        String encoding = StandardCharsets.UTF_8.name();
+        IOUtils.copy(inputStream, writer, encoding);
+
+        return writer.toString();
+
+    }
+
+    public void fillFileWithContent(String path, String resourceName, Resource resource) throws IOException {
+
+        String fileContent = getDecodedSampleFileContent(resource);
+        FileWriter fileWriter = new FileWriter(path);
+        try (PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            printWriter.printf(fileContent, resourceName);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

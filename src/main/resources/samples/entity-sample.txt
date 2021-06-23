@@ -1,0 +1,9 @@
+package entity;
+
+@Entity()
+public class %s {
+
+
+
+
+}

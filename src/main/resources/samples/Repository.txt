@@ -1,0 +1,9 @@
+package Repository;
+
+@Repository()
+public class %s {
+
+
+
+
+}

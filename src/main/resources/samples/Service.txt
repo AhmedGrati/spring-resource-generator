@@ -1,0 +1,9 @@
+package service;
+
+@Service()
+public class %s {
+
+
+
+
+}

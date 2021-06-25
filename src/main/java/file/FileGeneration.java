@@ -7,8 +7,12 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileGeneration {
+
+    private static final Logger logger = Logger.getLogger(FileGeneration.class.getName());
 
     private FileGeneration() {}
 
@@ -27,7 +31,7 @@ public class FileGeneration {
         try {
             return file.createNewFile();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "ERROR");
         }
         return null;
     };

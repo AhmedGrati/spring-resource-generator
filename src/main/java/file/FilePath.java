@@ -33,7 +33,7 @@ public class FilePath {
                 return file.getPath();
             }
             if (Objects.requireNonNull(file.listFiles()).length > 0) {
-                String path = findPathOfTheFileFromDirectory.apply(file, packageName);
+                findPathOfTheFileFromDirectory.apply(file, packageName);
             }
         }
         return null;

@@ -1,5 +1,6 @@
 package file;
 
+import actions.GenerateAction;
 import org.apache.commons.io.IOUtils;
 import schematics.Resource;
 import utils.generics.TriConsumer;
@@ -7,9 +8,12 @@ import utils.generics.TriConsumer;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Function;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileContent {
 
+    private static final Logger logger = Logger.getLogger(FileContent.class.getName());
     private FileContent() {}
 
    private static final Function<Resource, String> decodedSampleFileContent = resource -> {
@@ -20,7 +24,7 @@ public class FileContent {
             assert inputStream != null;
             IOUtils.copy(inputStream, writer, encoding);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "ERROR");
         }
 
         return writer.toString();
@@ -44,7 +48,7 @@ public class FileContent {
         try (PrintWriter printWriter = new PrintWriter(fileWriter)) {
             printWriter.printf(fileContent, resourceName);
         }catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "ERROR");
         }
 
 

@@ -11,9 +11,12 @@ import utils.NamingUtils;
 
 import java.io.*;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GenerateAction implements AbstractAction {
 
+    private static final Logger logger = Logger.getLogger(GenerateAction.class.getName());
 
     @Override
     public void execute(Resource resource, String resourceName) throws Exception {
@@ -25,7 +28,7 @@ public class GenerateAction implements AbstractAction {
         if (path == null) {
             boolean isDirectoryCreated = FileGeneration.getCreateDirectory().apply(file, packageName);
             if (!isDirectoryCreated) {
-                throw new UnsupportedOperationException("Directory Not Created");
+               logger.log(Level.SEVERE, "ERROR");
             } else {
                 String createdFilePath = String.valueOf(Paths.get(file.getPath(), packageName, fileName));
 
@@ -33,7 +36,7 @@ public class GenerateAction implements AbstractAction {
                 if (isFileCreated) {
                     FileContent.getFillFileWithContent().accept(createdFilePath, appropriateResourceName, resource);
                 } else {
-                    throw new UnsupportedOperationException("File Not Created");
+                    logger.log(Level.SEVERE, "ERROR");
                 }
             }
         }

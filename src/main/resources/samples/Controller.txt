@@ -1,0 +1,9 @@
+package Controller;
+
+@Controller()
+public class %s {
+
+
+
+
+}

@@ -28,6 +28,9 @@
     </plugins>
   </build>
   <properties>
+    <sonar.projectKey>AhmedGrati_spring-resource-generator</sonar.projectKey>
+    <sonar.organization>ahmedgrati</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
   </properties>

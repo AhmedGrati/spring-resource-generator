@@ -4,28 +4,27 @@ import configuration.help.AdditionalHelpInformation;
 import configuration.startup.ANSIStyling;
 import configuration.startup.AnsiConsoleManagement;
 import picocli.CommandLine;
-import utils.Constants;
+import utils.CLIConfigurationConstants;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@CommandLine.Command(name = Constants.SPRING_GENERATOR_COMMAND_NAME,subcommands = {DeleteCommand.class,GenerateCommand.class},
-        version = Constants.VERSION,
+@CommandLine.Command(name = CLIConfigurationConstants.SPRING_GENERATOR_COMMAND_NAME, subcommands = {DeleteCommand.class, GenerateCommand.class},
+        version = CLIConfigurationConstants.VERSION,
 
-        description = Constants.SPRING_GENERATOR_COMMAND_DESCRIPTION,
-        headerHeading = Constants.HEADER_HEADING,
-        synopsisHeading = Constants.SYNOPSIS_HEADING,
-        descriptionHeading = Constants.DESCRIPTION_HEADING,
-        parameterListHeading = Constants.PARAM_LIST_HEADING,
-        optionListHeading = Constants.OPTION_LIST_HEADING,
-        header = Constants.SPRING_GENERATOR_COMMAND_HEADER,
+        description = CLIConfigurationConstants.SPRING_GENERATOR_COMMAND_DESCRIPTION,
+        headerHeading = CLIConfigurationConstants.HEADER_HEADING,
+        synopsisHeading = CLIConfigurationConstants.SYNOPSIS_HEADING,
+        descriptionHeading = CLIConfigurationConstants.DESCRIPTION_HEADING,
+        parameterListHeading = CLIConfigurationConstants.PARAM_LIST_HEADING,
+        optionListHeading = CLIConfigurationConstants.OPTION_LIST_HEADING,
+        header = CLIConfigurationConstants.SPRING_GENERATOR_COMMAND_HEADER,
         mixinStandardHelpOptions = true)
-public class SpringResourceGenerator implements Runnable{
+public class SpringResourceGenerator implements Runnable {
 
     public final Logger logger = Logger.getLogger(SpringResourceGenerator.class.getName());
 
     /**
-     *
      * @param args
      */
     public static void main(String[] args) {

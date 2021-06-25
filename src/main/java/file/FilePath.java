@@ -6,7 +6,9 @@ import java.util.function.BiFunction;
 
 public class FilePath {
 
-    public static BiFunction<File, String, String> findPathOfTheFileFromDirectory = (file, packageName) -> {
+    private FilePath() {}
+
+    private static final BiFunction<File, String, String> findPathOfTheFileFromDirectory = (file, packageName) -> {
         for (File childFile : Objects.requireNonNull(file.listFiles())) {
             String path = FilePath.getPathOfResourcePackage.apply(childFile, packageName);
             if (path != null) {
@@ -17,7 +19,15 @@ public class FilePath {
 
     };
 
-    public static BiFunction<File, String, String> getPathOfResourcePackage = (file, packageName) -> {
+    public static BiFunction<File, String, String> getFindPathOfTheFileFromDirectory() {
+        return findPathOfTheFileFromDirectory;
+    }
+
+    public static BiFunction<File, String, String> getGetPathOfResourcePackage() {
+        return getPathOfResourcePackage;
+    }
+
+    private static final BiFunction<File, String, String> getPathOfResourcePackage = (file, packageName) -> {
         if (file != null && file.isDirectory()) {
             if (file.getName().equalsIgnoreCase(packageName)) {
                 return file.getPath();

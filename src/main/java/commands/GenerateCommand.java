@@ -4,12 +4,8 @@ import actions.GenerateAction;
 import picocli.CommandLine;
 import schematics.Entity;
 import schematics.RESTApi;
-import utils.APITypeValues;
 import utils.CLIConfigurationConstants;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @CommandLine.Command(name = CLIConfigurationConstants.GENERATE_COMMAND_NAME,
         aliases = {CLIConfigurationConstants.GENERATE_COMMAND_NAME_ALIAS},
@@ -22,7 +18,6 @@ import java.util.logging.Logger;
 )
 public class GenerateCommand implements Runnable {
 
-    public final Logger logger = Logger.getLogger(GenerateCommand.class.getName());
 
     @Override
     public void run() {
@@ -30,7 +25,7 @@ public class GenerateCommand implements Runnable {
 
         try {
             generateAction.execute(new Entity(new RESTApi()), "user");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -29,7 +29,7 @@ public class GenerateCommand implements Runnable {
         GenerateAction generateAction = new GenerateAction();
 
         try {
-            generateAction.generate(new Entity(new RESTApi()), "user");
+            generateAction.execute(new Entity(new RESTApi()), "user");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -12,10 +12,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-public class GenerateAction {
+public class GenerateAction implements AbstractAction {
 
 
-    public void generate(Resource resource, String resourceName) throws IOException {
+    @Override
+    public void execute(Resource resource, String resourceName) throws IOException {
         String appropriateResourceName = StringUtils.capitalise(resourceName);
         String fileName = appropriateResourceName+".java";
         String packageName = NamingUtils.getPackageNameFromResourceAndAPIType(resource, APITypeValues.REST);
@@ -36,6 +37,7 @@ public class GenerateAction {
                 }
             }
         }
+
     }
 
     public String getDecodedSampleFileContent(Resource resource) throws IOException {

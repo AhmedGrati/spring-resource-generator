@@ -1,13 +1,27 @@
 package utils;
 
 public enum APITypeValues {
-    GRAPHQL("GraphQL"), REST("Rest");
+    /**
+     * Value for GRAPHQL API.
+     */
+    GRAPHQL("GraphQL"),
+    /**
+     * Value for Rest API.
+     */
+    REST("Rest");
+
+    /**
+     * value attribute that specify the type of the api.
+     */
     private final String value;
 
-    APITypeValues(String value) {
-        this.value = value;
+    APITypeValues(final String apiValue) {
+        this.value = apiValue;
     }
 
+    /**
+     * @return String
+     */
     public String getValue() {
         return value;
     }

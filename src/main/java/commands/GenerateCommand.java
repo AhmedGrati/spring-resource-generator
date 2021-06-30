@@ -21,9 +21,15 @@ import java.util.logging.Logger;
 )
 public class GenerateCommand implements Runnable {
 
-    private static final Logger logger = Logger.getLogger(GenerateCommand.class.getName());
+    /**
+     * Logger.
+     */
+    private static final Logger LOGGER = Logger.getLogger(GenerateCommand.class.getName());
 
 
+    /**
+     * Function which will be executed when the generate command is triggered.
+     */
     @Override
     public void run() {
         GenerateAction generateAction = new GenerateAction();
@@ -32,7 +38,8 @@ public class GenerateCommand implements Runnable {
             generateAction.execute(new Entity(new RESTApi()), "user");
         } catch (Exception e) {
 
-            logger.log(Level.SEVERE,"ERROR");
+            LOGGER.log(Level.SEVERE, "ERROR");
+
 
         }
     }

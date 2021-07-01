@@ -9,7 +9,8 @@ import utils.CLIConfigurationConstants;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@CommandLine.Command(name = CLIConfigurationConstants.SPRING_GENERATOR_COMMAND_NAME, subcommands = {DeleteCommand.class, GenerateCommand.class},
+@CommandLine.Command(name = CLIConfigurationConstants.SPRING_GENERATOR_COMMAND_NAME,
+        subcommands = {DeleteCommand.class, GenerateCommand.class},
         version = CLIConfigurationConstants.VERSION,
 
         description = CLIConfigurationConstants.SPRING_GENERATOR_COMMAND_DESCRIPTION,
@@ -22,12 +23,23 @@ import java.util.logging.Logger;
         mixinStandardHelpOptions = true)
 public class SpringResourceGenerator implements Runnable {
 
-    public final Logger logger = Logger.getLogger(SpringResourceGenerator.class.getName());
+    /**
+     * Logger.
+     */
+    private final Logger logger = Logger.getLogger(SpringResourceGenerator.class.getName());
+
+    /**
+     * Getter which returns the class specific logger.
+     * @return Logger
+     */
+    public Logger getLogger() {
+        return logger;
+    }
 
     /**
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         // Declaring our command line which will pass through a pipeline to change some fields in it.
         CommandLine commandLine = new CommandLine(new SpringResourceGenerator());
 
@@ -51,6 +63,9 @@ public class SpringResourceGenerator implements Runnable {
         AnsiConsoleManagement.uninstall();
     }
 
+    /**
+     * The function which will be executed when the command is triggered.
+     */
     @Override
     public void run() {
 

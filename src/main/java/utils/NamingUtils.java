@@ -7,7 +7,6 @@ import schematics.Resource;
 import schematics.Service;
 import schematics.Controller;
 
-
 public final class NamingUtils {
     private NamingUtils() {
 

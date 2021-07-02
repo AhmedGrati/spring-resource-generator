@@ -46,3 +46,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
           checkstyle_config: 'sun_checks.xml'
+          fail_on_error: true
+          properties_file: 'checkstyle-properties.xml'

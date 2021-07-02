@@ -3,7 +3,8 @@
  * <p>
  *     This package provides multiple file management classes to easily perform some actions on file
  *     in the process of creating or deleting them.
- *     For example: {@link file.FilePath} FilePath gives the opportunity to get the path of a specific file in the project
+ *     For example: {@link file.FilePath} FilePath gives the opportunity to get the path of a specific file in the
+ *     project.
  *
  * </p>
  * <p>

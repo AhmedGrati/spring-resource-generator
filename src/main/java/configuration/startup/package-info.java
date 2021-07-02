@@ -7,8 +7,8 @@
  *     such as install and uninstall ANSI which helps to display colors in Windows operating system.
  * </p>
  * <p>
- *     The {@link configuration.startup.ANSIStyling} ANSIStyling is used to configure different parts of the command line
- *     colors.
+ *     The {@link configuration.startup.ANSIStyling} ANSIStyling is used to configure different parts of the command
+ *     line colors.
  * </p>
  */
 package configuration.startup;

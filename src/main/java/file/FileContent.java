@@ -28,7 +28,8 @@ public final class FileContent {
      * returns the decoded content of a file.
      */
     private static final Function<Resource, String> DECODED_SAMPLE_FILE_CONTENT = resource -> {
-        InputStream inputStream = FileContent.class.getClassLoader().getResourceAsStream("samples/" + resource.getClass().getSimpleName() + ".txt");
+        InputStream inputStream = FileContent.class.getClassLoader().getResourceAsStream("samples/" +
+                resource.getClass().getSimpleName() + ".txt");
         StringWriter writer = new StringWriter();
         String encoding = StandardCharsets.UTF_8.name();
         try {
@@ -62,7 +63,8 @@ public final class FileContent {
     /**
      * Fill a specific file with a content.
      */
-    private static final TriConsumer<String, String, Resource> FILL_FILE_WITH_CONTENT = (path, resourceName, resource) -> {
+    private static final TriConsumer<String, String, Resource> FILL_FILE_WITH_CONTENT = (path, resourceName, resource)
+            -> {
         String fileContent = DECODED_SAMPLE_FILE_CONTENT.apply(resource);
         FileWriter fileWriter = new FileWriter(path);
         try (PrintWriter printWriter = new PrintWriter(fileWriter)) {

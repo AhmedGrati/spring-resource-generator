@@ -41,10 +41,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run check style
-        uses: nikitasavinov/checkstyle-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: 'github-pr-check'
-          checkstyle_config: 'sun_checks.xml'
-          fail_on_error: true
-          properties_file: 'checkstyle-properties.xml'
+        run: mvn checkstyle:check

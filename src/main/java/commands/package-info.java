@@ -12,8 +12,8 @@
  *     resources.
  * </p>
  * <p>
- *     Unlike {@link commands.GenerateCommand} GenerateCommand , the {@link commands.DeleteCommand} DeleteCommand is used
- *     to delete different resources.
+ *     Unlike {@link commands.GenerateCommand} GenerateCommand , the {@link commands.DeleteCommand} DeleteCommand is
+ *     used to delete different resources.
  * </p>
  */
 package commands;

@@ -18,7 +18,8 @@ public final class NamingUtils {
      * @param apiTypeValues
      * @return String
      */
-    public static String getPackageNameFromResourceAndAPIType(final Resource resource, final APITypeValues apiTypeValues) {
+    public static String getPackageNameFromResourceAndAPIType(final Resource resource,
+                                                              final APITypeValues apiTypeValues) {
         if (resource instanceof Entity) {
             return PackageNameConstants.ENTITIES_PACKAGE_NAME;
         }

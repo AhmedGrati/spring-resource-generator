@@ -10,28 +10,44 @@ import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FileGeneration {
+public final class FileGeneration {
 
-    private static final Logger logger = Logger.getLogger(FileGeneration.class.getName());
+    /**
+     * Logger.
+     */
+    private static final Logger LOGGER = Logger.getLogger(FileGeneration.class.getName());
 
-    private FileGeneration() {}
+    private FileGeneration() {
+    }
 
-    private static final BiFunction<File, String, Boolean> createDirectory = (file, packageName) ->
+    /**
+     * A BiFunction which creates a directory.
+     */
+    private static final BiFunction<File, String, Boolean> CREATE_DIRECTORY = (file, packageName) ->
             FileUtils.getFile(String.valueOf(Paths.get(file.getPath(), packageName))).mkdir();
 
+    /**
+     * @return BiFunction
+     */
     public static BiFunction<File, String, Boolean> getCreateDirectory() {
-        return createDirectory;
+        return CREATE_DIRECTORY;
     }
 
+    /**
+     * @return Function
+     */
     public static Function<File, Boolean> getAddFile() {
-        return addFile;
+        return ADD_FILE;
     }
 
-    private static final Function<File, Boolean> addFile = file -> {
+    /**
+     * A Function which creates a new file.
+     */
+    private static final Function<File, Boolean> ADD_FILE = file -> {
         try {
             return file.createNewFile();
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "ERROR");
+            LOGGER.log(Level.SEVERE, "ERROR");
         }
         return null;
     };

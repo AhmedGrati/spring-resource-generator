@@ -20,9 +20,15 @@ import java.util.logging.Logger;
 )
 public class DeleteCommand implements Runnable {
 
-    public final Logger logger = Logger.getLogger(DeleteCommand.class.getName());
+    /**
+     * Logger.
+     */
+    private final Logger logger = Logger.getLogger(DeleteCommand.class.getName());
 
 
+    /**
+     * Triggered method when delete command is invoked.
+     */
     @Override
     public void run() {
         logger.log(Level.INFO, "IMPLEMENTATION OF DELETE COMMAND RUN");

@@ -2,12 +2,15 @@ package configuration.startup;
 
 import picocli.CommandLine;
 
-public class ANSIStyling {
+public final class ANSIStyling {
 
-    ANSIStyling() {
+    private ANSIStyling() {
     }
 
 
+    /**
+     * @return CommandLine.Help.ColorScheme
+     */
     public static CommandLine.Help.ColorScheme configureANSIStyling() {
 
         return new CommandLine.Help.ColorScheme.Builder()

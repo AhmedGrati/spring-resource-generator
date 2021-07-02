@@ -9,17 +9,25 @@ import schematics.Resource;
 import utils.APITypeValues;
 import utils.NamingUtils;
 
-import java.io.*;
+import java.io.File;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GenerateAction implements AbstractAction {
 
-    private static final Logger logger = Logger.getLogger(GenerateAction.class.getName());
+    /**
+     * Logger.
+     */
+    private static final Logger LOGGER = Logger.getLogger(GenerateAction.class.getName());
 
+    /**
+     * @param resource
+     * @param resourceName
+     * @throws Exception
+     */
     @Override
-    public void execute(Resource resource, String resourceName) throws Exception {
+    public void execute(final Resource resource, final String resourceName) throws Exception {
         String appropriateResourceName = StringUtils.capitalise(resourceName);
         String fileName = appropriateResourceName + ".java";
         String packageName = NamingUtils.getPackageNameFromResourceAndAPIType(resource, APITypeValues.REST);
@@ -28,7 +36,7 @@ public class GenerateAction implements AbstractAction {
         if (path == null) {
             boolean isDirectoryCreated = FileGeneration.getCreateDirectory().apply(file, packageName);
             if (!isDirectoryCreated) {
-               logger.log(Level.SEVERE, "ERROR");
+                LOGGER.log(Level.SEVERE, "ERROR");
             } else {
                 String createdFilePath = String.valueOf(Paths.get(file.getPath(), packageName, fileName));
 
@@ -36,7 +44,7 @@ public class GenerateAction implements AbstractAction {
                 if (isFileCreated) {
                     FileContent.getFillFileWithContent().accept(createdFilePath, appropriateResourceName, resource);
                 } else {
-                    logger.log(Level.SEVERE, "ERROR");
+                    LOGGER.log(Level.SEVERE, "ERROR");
                 }
             }
         }

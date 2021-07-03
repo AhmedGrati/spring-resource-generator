@@ -42,3 +42,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Run check style
         run: mvn checkstyle:check
+
+  findbugs_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run findbugs
+        run: mvn findbugs:check

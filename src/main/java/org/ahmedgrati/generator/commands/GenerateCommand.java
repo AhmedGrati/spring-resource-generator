@@ -1,9 +1,12 @@
 package org.ahmedgrati.generator.commands;
 
 import org.ahmedgrati.generator.actions.GenerateAction;
+import org.ahmedgrati.generator.parameters.GenerateParameter;
 import org.ahmedgrati.generator.schematics.Entity;
 import org.ahmedgrati.generator.schematics.RESTApi;
+import org.ahmedgrati.generator.schematics.Resource;
 import org.ahmedgrati.generator.utils.CLIConfigurationConstants;
+import org.ahmedgrati.generator.utils.ResourceParameter;
 import picocli.CommandLine;
 
 
@@ -28,6 +31,16 @@ public class GenerateCommand implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(GenerateCommand.class.getName());
 
 
+    @CommandLine.Option(names = {"-g", "--groupid"}, description = "Specify The Group ID Of The Project", required = true)
+    private String groupId;
+
+    @CommandLine.Parameters(index = "0", description = "Resource To Generate")
+    ResourceParameter resource;
+
+
+    @CommandLine.Parameters(index = "1", description = "Resource Name")
+    String resourceName;
+
     /**
      * Function which will be executed when the generate command is triggered.
      */
@@ -36,7 +49,7 @@ public class GenerateCommand implements Runnable {
         GenerateAction generateAction = new GenerateAction();
 
         try {
-            generateAction.execute(new Entity(new RESTApi()), "user");
+            generateAction.execute(resource, resourceName, groupId);
         } catch (Exception e) {
 
             LOGGER.log(Level.SEVERE, "ERROR");

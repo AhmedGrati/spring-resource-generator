@@ -1,7 +1,7 @@
 package org.ahmedgrati.generator.schematics;
 
 public class Repository extends Resource {
-    Repository(final APIType apiType) {
+    public Repository(final APIType apiType) {
         super(apiType);
     }
 

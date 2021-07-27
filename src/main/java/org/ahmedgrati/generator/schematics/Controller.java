@@ -4,7 +4,7 @@ package org.ahmedgrati.generator.schematics;
 import org.ahmedgrati.generator.utils.APITypeValues;
 
 public final class Controller extends Resource {
-    Controller(final APIType apiType) {
+    public Controller(final APIType apiType) {
         super(apiType);
     }
 

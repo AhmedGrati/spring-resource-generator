@@ -4,11 +4,9 @@ package org.ahmedgrati.generator.actions;
 import org.ahmedgrati.generator.file.FileContent;
 import org.ahmedgrati.generator.file.FileGeneration;
 import org.ahmedgrati.generator.file.FilePath;
-import org.ahmedgrati.generator.parameters.GenerateParameter;
 import org.ahmedgrati.generator.schematics.*;
 import org.ahmedgrati.generator.utils.APITypeValues;
 import org.ahmedgrati.generator.utils.NamingUtils;
-import org.ahmedgrati.generator.parameters.BaseParameter;
 import org.ahmedgrati.generator.utils.ResourceParameter;
 import org.apache.commons.io.FileUtils;
 import org.codehaus.plexus.util.StringUtils;
@@ -43,9 +41,17 @@ public class GenerateAction implements AbstractAction {
             case "service":
                 resource = new Service(new RESTApi());
                 break;
+
             case "repository":
                 resource = new Repository(new RESTApi());
                 break;
+            case "controller":
+                resource = new Controller(new RESTApi());
+                break;
+            case "resolver":
+                resource = new Controller(new GraphQL());
+                break;
+
             default:
                 LOGGER.log(Level.SEVERE, "RESOURCE NOT FOUND");
         }
@@ -55,8 +61,8 @@ public class GenerateAction implements AbstractAction {
 
         String packageName = NamingUtils.getPackageNameFromResourceAndAPIType(resource, APITypeValues.REST);
 
-        String directoryAsGroupID = groupId.replaceAll("\\.","/");
-        File file = FileUtils.getFile("src/main/java/"+directoryAsGroupID);
+        String directoryAsGroupID = groupId.replace("\\.", "/");
+        File file = FileUtils.getFile("src/main/java/" + directoryAsGroupID);
 
         String path = FilePath.getGetPathOfResourcePackage().apply(file, packageName);
 
@@ -70,6 +76,8 @@ public class GenerateAction implements AbstractAction {
             } else {
                 LOGGER.log(Level.SEVERE, "ERROR");
             }
+
+
         }
 
     }

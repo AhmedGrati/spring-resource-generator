@@ -64,7 +64,6 @@ public class GenerateAction implements AbstractAction {
         String directoryAsGroupID = groupId.replaceAll("\\.", "/");
         File file = FileUtils.getFile("src/main/java/" + directoryAsGroupID);
 
-        System.out.println(directoryAsGroupID);
         String path = FilePath.getGetPathOfResourcePackage().apply(file, packageName);
 
         if (path == null) {
@@ -81,7 +80,7 @@ public class GenerateAction implements AbstractAction {
                 }
             }
         } else {
-            System.out.println("FILE ALREADY EXISTS");
+            LOGGER.log(Level.SEVERE,"FILE ALREADY EXISTS");
         }
 
     }

@@ -61,23 +61,27 @@ public class GenerateAction implements AbstractAction {
 
         String packageName = NamingUtils.getPackageNameFromResourceAndAPIType(resource, APITypeValues.REST);
 
-        String directoryAsGroupID = groupId.replace("\\.", "/");
+        String directoryAsGroupID = groupId.replaceAll("\\.", "/");
         File file = FileUtils.getFile("src/main/java/" + directoryAsGroupID);
 
+        System.out.println(directoryAsGroupID);
         String path = FilePath.getGetPathOfResourcePackage().apply(file, packageName);
 
         if (path == null) {
-            FileGeneration.getCreateDirectory().apply(file, packageName);
-
-            String createdFilePath = String.valueOf(Paths.get(file.getPath(), packageName, fileName));
-            boolean isFileCreated = FileGeneration.getAddFile().apply(new File(createdFilePath));
-            if (isFileCreated) {
-                FileContent.getFillFileWithContent().accept(createdFilePath, appropriateResourceName, resource);
+            boolean isDirectoryCreated = FileGeneration.getCreateDirectory().apply(file, packageName);
+            if(!isDirectoryCreated) {
+                LOGGER.log(Level.SEVERE, "Directory not created");
             } else {
-                LOGGER.log(Level.SEVERE, "ERROR");
+                String createdFilePath = String.valueOf(Paths.get(file.getPath(), packageName, fileName));
+                boolean isFileCreated = FileGeneration.getAddFile().apply(new File(createdFilePath));
+                if (isFileCreated) {
+                    FileContent.getFillFileWithContent().accept(createdFilePath, appropriateResourceName, resource);
+                } else {
+                    LOGGER.log(Level.SEVERE, "ERROR");
+                }
             }
-
-
+        } else {
+            System.out.println("FILE ALREADY EXISTS");
         }
 
     }

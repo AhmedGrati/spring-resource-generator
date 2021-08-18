@@ -1,10 +1,6 @@
 package org.ahmedgrati.generator.commands;
 
 import org.ahmedgrati.generator.actions.GenerateAction;
-import org.ahmedgrati.generator.parameters.GenerateParameter;
-import org.ahmedgrati.generator.schematics.Entity;
-import org.ahmedgrati.generator.schematics.RESTApi;
-import org.ahmedgrati.generator.schematics.Resource;
 import org.ahmedgrati.generator.utils.CLIConfigurationConstants;
 import org.ahmedgrati.generator.utils.ResourceParameter;
 import picocli.CommandLine;
@@ -47,14 +43,10 @@ public class GenerateCommand implements Runnable {
     @Override
     public void run() {
         GenerateAction generateAction = new GenerateAction();
-
         try {
             generateAction.execute(resource, resourceName, groupId);
         } catch (Exception e) {
-
             LOGGER.log(Level.SEVERE, "ERROR");
-
-
         }
     }
 }

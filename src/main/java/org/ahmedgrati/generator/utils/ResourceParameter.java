@@ -12,7 +12,7 @@ public enum ResourceParameter {
 
     private final String value;
 
-    ResourceParameter(String value) {
+    ResourceParameter(final String value) {
         this.value = value;
     }
 
@@ -20,7 +20,7 @@ public enum ResourceParameter {
         return value;
     }
 
-    public static ResourceParameter from(String value) {
+    public static ResourceParameter from(final String value) {
         return Arrays.stream(values())
                 .filter(element -> element.value.equals(value))
                 .findFirst()

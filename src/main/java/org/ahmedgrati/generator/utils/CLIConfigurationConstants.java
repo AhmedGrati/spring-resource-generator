@@ -69,8 +69,8 @@ public final class CLIConfigurationConstants {
     /**
      * The command line description using ANSI Colors.
      */
-    public static final String SPRING_GENERATOR_COMMAND_DESCRIPTION = "@|fg(green) A Command Line Which Helps Spring "+
-            "Developers To Manage Schematic Easily. |@";
+    public static final String SPRING_GENERATOR_COMMAND_DESCRIPTION = "@|fg(green) A Command Line Which Helps Spring "
+            + "Developers To Manage Schematic Easily. |@";
     /**
      * The command line header using ANSI Colors.
      */

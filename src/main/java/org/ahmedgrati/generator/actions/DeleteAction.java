@@ -1,8 +1,5 @@
 package org.ahmedgrati.generator.actions;
 
-
-import org.ahmedgrati.generator.actions.AbstractAction;
-import org.ahmedgrati.generator.schematics.Resource;
 import org.ahmedgrati.generator.utils.ResourceParameter;
 
 import java.net.UnknownServiceException;

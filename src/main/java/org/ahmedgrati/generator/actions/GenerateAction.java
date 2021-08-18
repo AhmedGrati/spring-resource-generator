@@ -4,7 +4,13 @@ package org.ahmedgrati.generator.actions;
 import org.ahmedgrati.generator.file.FileContent;
 import org.ahmedgrati.generator.file.FileGeneration;
 import org.ahmedgrati.generator.file.FilePath;
-import org.ahmedgrati.generator.schematics.*;
+import org.ahmedgrati.generator.schematics.Entity;
+import org.ahmedgrati.generator.schematics.RESTApi;
+import org.ahmedgrati.generator.schematics.Resource;
+import org.ahmedgrati.generator.schematics.Service;
+import org.ahmedgrati.generator.schematics.Repository;
+import org.ahmedgrati.generator.schematics.Controller;
+import org.ahmedgrati.generator.schematics.GraphQL;
 import org.ahmedgrati.generator.utils.APITypeValues;
 import org.ahmedgrati.generator.utils.NamingUtils;
 import org.ahmedgrati.generator.utils.ResourceParameter;
@@ -68,7 +74,7 @@ public class GenerateAction implements AbstractAction {
 
         if (path == null) {
             boolean isDirectoryCreated = FileGeneration.getCreateDirectory().apply(file, packageName);
-            if(!isDirectoryCreated) {
+            if (!isDirectoryCreated) {
                 LOGGER.log(Level.SEVERE, "Directory not created");
             } else {
                 String createdFilePath = String.valueOf(Paths.get(file.getPath(), packageName, fileName));
@@ -80,7 +86,7 @@ public class GenerateAction implements AbstractAction {
                 }
             }
         } else {
-            LOGGER.log(Level.SEVERE,"FILE ALREADY EXISTS");
+            LOGGER.log(Level.SEVERE, "FILE ALREADY EXISTS");
         }
 
     }

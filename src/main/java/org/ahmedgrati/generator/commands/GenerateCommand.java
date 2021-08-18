@@ -27,15 +27,23 @@ public class GenerateCommand implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(GenerateCommand.class.getName());
 
 
+    /**
+     * This a CLI specified param which represent the group id of a specific project.
+     */
     @CommandLine.Option(names = {"-g", "--groupid"}, description = "Specify The Group ID Of The Project", required = true)
     private String groupId;
 
+    /**
+     * This a CLI specified param which represent the resource that will be generated.
+     */
     @CommandLine.Parameters(index = "0", description = "Resource To Generate")
-    ResourceParameter resource;
+    private ResourceParameter resource;
 
-
+    /**
+     * This a CLI specified param which represent the name of the generated resource.
+     */
     @CommandLine.Parameters(index = "1", description = "Resource Name")
-    String resourceName;
+    private String resourceName;
 
     /**
      * Function which will be executed when the generate command is triggered.
@@ -49,4 +57,27 @@ public class GenerateCommand implements Runnable {
             LOGGER.log(Level.SEVERE, "ERROR");
         }
     }
+
+    /**
+     * @return the project group id.
+     */
+    public String getGroupId() {
+        return groupId;
+    }
+
+    /**
+     * @return the resource that will be generated.
+     */
+    public ResourceParameter getResource() {
+        return resource;
+    }
+
+
+    /**
+     * @return the resource name.
+     */
+    public String getResourceName() {
+        return resourceName;
+    }
+
 }

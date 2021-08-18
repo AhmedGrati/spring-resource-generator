@@ -12,8 +12,8 @@ public final class FilePath {
     /**
      * A BiFunction which find the path of specific file from a given package name.
      */
-    private static final BiFunction<File, String, String> FIND_PATH_OF_THE_FILE_FROM_DIRECTORY = (file, packageName) ->
-    {
+    private static final BiFunction<File, String, String> FIND_PATH_OF_THE_FILE_FROM_DIRECTORY = (file, packageName)
+            -> {
         for (File childFile : Objects.requireNonNull(file.listFiles())) {
             String path = FilePath.GET_PATH_OF_RESOURCE_PACKAGE.apply(childFile, packageName);
             if (path != null) {

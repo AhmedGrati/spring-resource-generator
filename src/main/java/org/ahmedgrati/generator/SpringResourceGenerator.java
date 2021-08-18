@@ -6,6 +6,7 @@ import org.ahmedgrati.generator.configuration.help.AdditionalHelpInformation;
 import org.ahmedgrati.generator.configuration.startup.ANSIStyling;
 import org.ahmedgrati.generator.configuration.startup.AnsiConsoleManagement;
 import org.ahmedgrati.generator.utils.CLIConfigurationConstants;
+import org.ahmedgrati.generator.utils.ResourceParameter;
 import picocli.CommandLine;
 
 import java.util.logging.Level;
@@ -44,6 +45,9 @@ public class SpringResourceGenerator implements Runnable {
     public static void main(final String[] args) {
         // Declaring our command line which will pass through a pipeline to change some fields in it.
         CommandLine commandLine = new CommandLine(new SpringResourceGenerator());
+
+        // A converter which enable us to convert a CLI param to an ENUM
+        commandLine.registerConverter(ResourceParameter.class, ResourceParameter::from);
 
         // Add the "available schematics" section
         commandLine = AdditionalHelpInformation.addAnotherHelpSection(commandLine);

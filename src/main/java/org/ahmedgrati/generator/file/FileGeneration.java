@@ -24,7 +24,7 @@ public final class FileGeneration {
      * A BiFunction which creates a directory.
      */
     private static final BiFunction<File, String, Boolean> CREATE_DIRECTORY = (file, packageName) ->
-            FileUtils.getFile(String.valueOf(Paths.get(file.getPath(), packageName))).mkdir();
+            FileUtils.getFile(String.valueOf(Paths.get(file.getPath(), packageName))).mkdirs();
 
     /**
      * @return BiFunction
@@ -47,7 +47,7 @@ public final class FileGeneration {
         try {
             return file.createNewFile();
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "ERROR");
+            LOGGER.log(Level.SEVERE, e.getMessage());
         }
         return null;
     };

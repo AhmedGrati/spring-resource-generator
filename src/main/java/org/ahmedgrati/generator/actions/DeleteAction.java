@@ -1,8 +1,6 @@
 package org.ahmedgrati.generator.actions;
 
-
-import org.ahmedgrati.generator.actions.AbstractAction;
-import org.ahmedgrati.generator.schematics.Resource;
+import org.ahmedgrati.generator.utils.ResourceParameter;
 
 import java.net.UnknownServiceException;
 
@@ -13,7 +11,8 @@ public class DeleteAction implements AbstractAction {
      * @throws Exception
      */
     @Override
-    public void execute(final Resource resource, final String resourceName) throws Exception {
+    public void execute(final ResourceParameter resource, final String resourceName, final String groupId)
+            throws Exception {
         throw new UnknownServiceException("This Method Is Not Implemented Yet");
 
     }

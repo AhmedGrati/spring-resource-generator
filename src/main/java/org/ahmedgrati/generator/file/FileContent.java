@@ -28,8 +28,8 @@ public final class FileContent {
      * returns the decoded content of a file.
      */
     private static final Function<Resource, String> DECODED_SAMPLE_FILE_CONTENT = resource -> {
-        InputStream inputStream = FileContent.class.getClassLoader().getResourceAsStream("samples/" +
-                resource.getClass().getSimpleName() + ".txt");
+        InputStream inputStream = FileContent.class.getClassLoader().getResourceAsStream("samples/"
+                + resource.getClass().getSimpleName() + ".txt");
         StringWriter writer = new StringWriter();
         String encoding = StandardCharsets.UTF_8.name();
         try {

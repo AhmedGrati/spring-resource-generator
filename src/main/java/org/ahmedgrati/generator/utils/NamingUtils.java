@@ -1,7 +1,11 @@
 package org.ahmedgrati.generator.utils;
 
 
-import org.ahmedgrati.generator.schematics.*;
+import org.ahmedgrati.generator.schematics.Entity;
+import org.ahmedgrati.generator.schematics.Repository;
+import org.ahmedgrati.generator.schematics.Resource;
+import org.ahmedgrati.generator.schematics.Service;
+import org.ahmedgrati.generator.schematics.Controller;
 
 public final class NamingUtils {
     private NamingUtils() {

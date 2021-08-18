@@ -25,4 +25,9 @@ public final class PackageNameConstants {
      * Constant that represent the package name which holds all resolvers in the project.
      */
     public static final String RESOLVER_PACKAGE_NAME = "resolver";
+
+    /**
+     * Constant that represent the root folder name for the project.
+     */
+    public static final String ROOT_FOLDER = "src/main/java";
 }

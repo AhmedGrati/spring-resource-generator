@@ -4,9 +4,16 @@ package org.ahmedgrati.generator.actions;
 import org.ahmedgrati.generator.file.FileContent;
 import org.ahmedgrati.generator.file.FileGeneration;
 import org.ahmedgrati.generator.file.FilePath;
+import org.ahmedgrati.generator.schematics.Entity;
+import org.ahmedgrati.generator.schematics.RESTApi;
 import org.ahmedgrati.generator.schematics.Resource;
+import org.ahmedgrati.generator.schematics.Service;
+import org.ahmedgrati.generator.schematics.Repository;
+import org.ahmedgrati.generator.schematics.Controller;
+import org.ahmedgrati.generator.schematics.GraphQL;
 import org.ahmedgrati.generator.utils.APITypeValues;
 import org.ahmedgrati.generator.utils.NamingUtils;
+import org.ahmedgrati.generator.utils.ResourceParameter;
 import org.apache.commons.io.FileUtils;
 import org.codehaus.plexus.util.StringUtils;
 
@@ -23,25 +30,54 @@ public class GenerateAction implements AbstractAction {
      */
     private static final Logger LOGGER = Logger.getLogger(GenerateAction.class.getName());
 
+
     /**
-     * @param resource
+     * @param resourceParam
      * @param resourceName
      * @throws Exception
      */
     @Override
-    public void execute(final Resource resource, final String resourceName) throws Exception {
+    public void execute(final ResourceParameter resourceParam, final String resourceName, final String groupId)
+            throws Exception {
+        Resource resource = null;
+        switch (resourceParam.value()) {
+            case "entity":
+                resource = new Entity(new RESTApi());
+                break;
+            case "service":
+                resource = new Service(new RESTApi());
+                break;
+
+            case "repository":
+                resource = new Repository(new RESTApi());
+                break;
+            case "controller":
+                resource = new Controller(new RESTApi());
+                break;
+            case "resolver":
+                resource = new Controller(new GraphQL());
+                break;
+
+            default:
+                LOGGER.log(Level.SEVERE, "RESOURCE NOT FOUND");
+        }
         String appropriateResourceName = StringUtils.capitalise(resourceName);
+
         String fileName = appropriateResourceName + ".java";
+
         String packageName = NamingUtils.getPackageNameFromResourceAndAPIType(resource, APITypeValues.REST);
-        File file = FileUtils.getFile("src/main/java");
+
+        String directoryAsGroupID = groupId.replaceAll("\\.", "/");
+        File file = FileUtils.getFile("src/main/java/" + directoryAsGroupID);
+
         String path = FilePath.getGetPathOfResourcePackage().apply(file, packageName);
+
         if (path == null) {
             boolean isDirectoryCreated = FileGeneration.getCreateDirectory().apply(file, packageName);
             if (!isDirectoryCreated) {
-                LOGGER.log(Level.SEVERE, "ERROR");
+                LOGGER.log(Level.SEVERE, "Directory not created");
             } else {
                 String createdFilePath = String.valueOf(Paths.get(file.getPath(), packageName, fileName));
-
                 boolean isFileCreated = FileGeneration.getAddFile().apply(new File(createdFilePath));
                 if (isFileCreated) {
                     FileContent.getFillFileWithContent().accept(createdFilePath, appropriateResourceName, resource);
@@ -49,6 +85,8 @@ public class GenerateAction implements AbstractAction {
                     LOGGER.log(Level.SEVERE, "ERROR");
                 }
             }
+        } else {
+            LOGGER.log(Level.SEVERE, "FILE ALREADY EXISTS");
         }
 
     }

@@ -30,7 +30,8 @@ public class GenerateCommand implements Runnable {
     /**
      * This a CLI specified param which represent the group id of a specific project.
      */
-    @CommandLine.Option(names = {"-g", "--groupid"}, description = "Specify The Group ID Of The Project", required = true)
+    @CommandLine.Option(names = {"-g", "--groupid"}, description = "Specify The Group ID Of The Project",
+            required = true)
     private String groupId;
 
     /**

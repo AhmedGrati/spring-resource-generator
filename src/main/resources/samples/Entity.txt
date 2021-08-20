@@ -1,4 +1,4 @@
-package entity;
+package org.ahmedgrati.generator.entity;
 
 @Entity()
 public class %s {

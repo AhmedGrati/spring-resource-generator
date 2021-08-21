@@ -14,13 +14,13 @@ COPY ./src ./src
 RUN mvn clean package
 
 # our final base image
-FROM openjdk:8u171-jre-alpine as final
+FROM gcr.io/distroless/java
 
 # set deployment directory
 WORKDIR /spring-generator
 
 # copy over the built artifact from the maven image
 COPY --from=maven target/* ./
-RUN ls -l
-## set the startup command to run your binary
-#CMD ["java", "-jar", "./spring-resource-generator-1.0-SNAPSHOT.jar"]
+
+# set the startup command to run your binary
+ENTRYPOINT ["java", "-jar", "/spring-generator/spring-resource-generator-1.0-SNAPSHOT.jar","--help"]

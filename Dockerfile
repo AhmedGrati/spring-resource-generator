@@ -20,7 +20,7 @@ FROM gcr.io/distroless/java
 WORKDIR /spring-generator
 
 # copy over the built artifact from the maven image
-COPY --from=maven target/* ./
+COPY --from=maven target/spring-resource-generator-1.0-SNAPSHOT.jar ./generator.jav
 
 # set the startup command to run your binary
-ENTRYPOINT ["java", "-jar", "/spring-generator/spring-resource-generator-1.0-SNAPSHOT.jar","--help"]
+ENTRYPOINT ["java", "-jar", "/spring-generator/generator.jar","--help"]
